@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+
+# Environment Variables
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# IDEs and System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large raw HTML files from scraping
+tiktok_raw_page.html

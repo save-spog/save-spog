@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TK Analytics - TikTok Shop Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-chart-pie logo-icon"></i>
+                <span>TK Analytics</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-compass"></i> ภาพรวม (Discover)</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-box-open"></i> สินค้า (Products)</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-store"></i> ร้านค้า (Shops)</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-users"></i> ครีเอเตอร์ (Creators)</a>
+                <a href="#" class="nav-item"><i class="fa-solid fa-video"></i> ไลฟ์ & โฆษณา (Live & Ads)</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="avatar">M</div>
+                    <div class="user-info">
+                        <span class="user-name">Pro Member</span>
+                        <span class="user-plan">อัปเกรดแผน</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="ค้นหาสินค้า, ร้านค้า, หรือครีเอเตอร์...">
+                </div>
+                <div class="topbar-actions">
+                    <button id="scrape-btn" class="action-btn primary-btn" style="background: var(--primary-cyan); color: #000;"><i class="fa-solid fa-bolt"></i> ดึงข้อมูลล่าสุด</button>
+                    <button class="action-btn"><i class="fa-regular fa-bell"></i></button>
+                    <button class="action-btn primary-btn"><i class="fa-solid fa-robot"></i> AI Insight</button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h1>🔥 สินค้ายอดนิยม (Top Products)</h1>
+                    <div class="filters">
+                        <select class="filter-select">
+                            <option>ประเทศไทย (Thailand)</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>7 วันล่าสุด</option>
+                            <option>30 วันล่าสุด</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon pink"><i class="fa-solid fa-baht-sign"></i></div>
+                        <div class="stat-info">
+                            <h3>ยอดขายรวม (GMV)</h3>
+                            <h2>฿142.5M</h2>
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> +12.5%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon cyan"><i class="fa-solid fa-box"></i></div>
+                        <div class="stat-info">
+                            <h3>สินค้าที่ขายได้</h3>
+                            <h2>845,210</h2>
+                            <span class="trend positive"><i class="fa-solid fa-arrow-up"></i> +5.2%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple"><i class="fa-solid fa-store"></i></div>
+                        <div class="stat-info">
+                            <h3>ร้านค้าที่แอคทีฟ</h3>
+                            <h2>12,450</h2>
+                            <span class="trend negative"><i class="fa-solid fa-arrow-down"></i> -1.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-section">
+                    <div class="section-header">
+                        <h2>Top 50 สินค้าขายดี</h2>
+                        <button class="export-btn"><i class="fa-solid fa-download"></i> Export Data</button>
+                    </div>
+                    
+                    <div class="products-grid" id="products-container">
+                        <!-- Product cards will be injected by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

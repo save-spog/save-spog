@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Overlay</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    /* พื้นหลังสีเขียวสำหรับทำ Green Screen ใน TikTok */
+    background-color: #00FF00;
+    font-family: 'Kanit', sans-serif;
+    display: inline-block;
+    padding: 20px; /* เผื่อพื้นที่ให้เงาและอนิเมชั่น */
+  }
+  
+  .overlay-container {
+    background: linear-gradient(135deg, #4b0082, #9932cc); /* ธีมม่วงหรูหรา */
+    border: 3px solid #FFD700;
+    border-radius: 20px;
+    padding: 10px 30px;
+    box-shadow: 0 6px 20px rgba(75, 0, 130, 0.6), inset 0 0 15px rgba(255, 215, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    /* อนิเมชั่นลอยขึ้นลงเบาๆ ให้ดูมีชีวิตชีวา */
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    color: #ffffff;
+  }
+
+  .discount-box {
+    background: linear-gradient(135deg, #FFD700, #ffaa00); /* ทองไล่ระดับ */
+    color: #3b0066; /* ตัวหนังสือสีม่วงเข้ม */
+    padding: 2px 20px;
+    border-radius: 30px;
+    font-size: 38px;
+    font-weight: 800;
+    margin-top: 8px;
+    text-shadow: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    /* อนิเมชั่นขยายเข้าออกดึงดูดสายตา */
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay-container">
+  <div class="title">ซื้อหน้าไลฟ์</div>
+  <div class="discount-box">รับส่วนลด 100.-</div>
+</div>
+
+</body>
+</html>
