@@ -1,3 +1,9 @@
+import sys
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from selenium import webdriver
