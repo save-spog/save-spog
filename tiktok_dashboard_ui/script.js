@@ -11,26 +11,40 @@ function renderProducts(products) {
     products.forEach((product, index) => {
         const rank = product.rank || (index + 1);
         const card = document.createElement('div');
-        card.className = 'product-card';
         
-        // Use a generic placeholder image if none provided
+        // Add dynamic rank styling class
+        let rankClass = '';
+        if (rank === 1) rankClass = ' rank-1';
+        else if (rank === 2) rankClass = ' rank-2';
+        else if (rank === 3) rankClass = ' rank-3';
+        
+        card.className = 'product-card' + rankClass;
+        
         const defaultImg = "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80";
+        
+        // Format first letter of shop name for avatar
+        const shopInitials = product.shopName ? product.shopName.charAt(0).toUpperCase() : 'S';
         
         card.innerHTML = `
             <div class="product-rank">TOP ${rank}</div>
-            <img src="${product.imgUrl || defaultImg}" alt="Product Image" class="product-img">
+            <div class="product-img-wrapper">
+                <img src="${product.imgUrl || defaultImg}" alt="Product Image" class="product-img" onerror="this.src='${defaultImg}'">
+            </div>
             <div class="product-details">
-                <h3 class="product-title">${product.title || 'ไม่มีชื่อสินค้า'}</h3>
+                <h3 class="product-title" title="${product.title || ''}">${product.title || 'ไม่มีชื่อสินค้า'}</h3>
+                
                 <div class="product-metrics">
                     <span class="price">${product.price || '-'}</span>
                     <span class="sales">${product.sales || '-'}</span>
                 </div>
-                <div class="product-metrics" style="margin-bottom: 0;">
-                    <span style="font-size: 0.8rem; color: var(--text-muted);">รายได้โดยประมาณ</span>
-                    <span style="color: var(--primary-pink); font-weight: 500;">${product.revenue || '-'}</span>
+                
+                <div class="product-estimate">
+                    <span class="estimate-label">รายได้ประมาณ (GMV)</span>
+                    <span class="estimate-val">${product.revenue || '-'}</span>
                 </div>
+                
                 <div class="shop-info">
-                    <div class="shop-avatar"></div>
+                    <div class="shop-avatar">${shopInitials}</div>
                     <span>${product.shopName || 'Shop'}</span>
                 </div>
             </div>
