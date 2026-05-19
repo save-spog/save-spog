@@ -108,11 +108,42 @@ function setupScrapeButton() {
     }
 }
 
+function setupKalodataScrapeButton() {
+    const btn = document.getElementById('scrape-kalodata-btn');
+    if(btn) {
+        btn.addEventListener('click', async () => {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังเกาะขูดข้อมูล Kalodata...';
+            btn.disabled = true;
+            btn.style.opacity = '0.7';
+            
+            try {
+                const response = await fetch('/api/scrape-kalodata', { method: 'POST' });
+                const result = await response.json();
+                
+                if(result.status === 'success') {
+                    renderProducts(result.data);
+                    alert('อาแฮ่มขูดข้อมูลจาก Kalodata สำเร็จแล้วครับลูกพี่! 🎉');
+                } else {
+                    alert('บอทเกิดข้อผิดพลาด: ' + result.message);
+                }
+            } catch (err) {
+                alert('ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์หลังบ้านได้ กรุณาไปกดรันไฟล์ server.py ก่อนครับ!');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
+        });
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     loadData();
     setupSidebar();
     setupScrapeButton();
+    setupKalodataScrapeButton();
     // Auto refresh data every 5 seconds to show real-time updates!
     setInterval(loadData, 5000);
 });

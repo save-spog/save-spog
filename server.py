@@ -83,6 +83,21 @@ def trigger_scrape():
         print(f"Error: {e}")
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route('/api/scrape-kalodata', methods=['POST'])
+def trigger_scrape_kalodata():
+    print("Kalodata scrape triggered...")
+    try:
+        from scrape_kalodata import scrape_kalodata
+        result = scrape_kalodata()
+        if result["status"] == "success":
+            return jsonify(result)
+        else:
+            return jsonify(result), 400
+    except Exception as e:
+        print(f"Error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 if __name__ == '__main__':
     print("==================================================")
     print("Start TikTok Dashboard API Server")
